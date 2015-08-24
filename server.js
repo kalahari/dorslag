@@ -12,7 +12,7 @@ var cfg = {
     logLevel: 'info'
 };
 if(/^#[\w\-]+$/.test(process.env.SLACK_CHANNEL)) cfg.slackChannel = process.env.SLACK_CHANNEL;
-if(/^[\w\-]+$/.test(process.env.SLACK_USER)) cfg.slackUser = process.env.SLACK_USER;
+if(typeof process.env.SLACK_USER === 'string' && process.env.SLACK_USER.length > 0) cfg.slackUser = process.env.SLACK_USER;
 if(typeof process.env.SLACK_ICON === 'string' && process.env.SLACK_ICON.length > 0) cfg.slackIcon = process.env.SLACK_ICON;
 if(/^(fatal|error|warn|info|debug|trace)$/.test(process.env.LOG_LEVEL)) cfg.logLevel = process.env.LOG_LEVEL;
 
@@ -83,7 +83,7 @@ function handleRegistryEvent(event, idx, events) {
 
         var slackMessage = {
             username: cfg.slackUser,
-            text: event.request.method + ' ' + event.request.host + '/' + manifest.name + ':' + manifest.tag + ' ' + event.target.digest,
+            text: '<' + event.target.url + '|' + event.request.method + ' ' + event.request.host + '/' + manifest.name + ':' + manifest.tag + '> ' + event.target.digest,
             icon_emoji: cfg.slackIcon
         };
         if(cfg.slackChannel) slackMessage.channel = cfg.slackChannel;
