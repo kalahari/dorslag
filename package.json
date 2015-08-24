@@ -1,0 +1,29 @@
+{
+  "name": "dorslag",
+  "version": "1.0.0",
+  "description": "DOcker Registry SLack AGent",
+  "main": "server.js",
+  "dependencies": {
+    "bunyan": "^1.4.0",
+    "restify": "^3.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kalahari/dorslag.git"
+  },
+  "keywords": [
+    "docker",
+    "slack"
+  ],
+  "author": "Blake Mitchell <kalahari@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/kalahari/dorslag/issues"
+  },
+  "homepage": "https://github.com/kalahari/dorslag#readme"
+}
