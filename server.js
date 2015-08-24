@@ -83,7 +83,7 @@ function handleRegistryEvent(event, idx, events) {
 
         var slackMessage = {
             username: cfg.slackUser,
-            text: '<' + event.target.url + '|' + event.request.method + ' ' + event.request.host + '/' + manifest.name + ':' + manifest.tag + '> ' + event.target.digest,
+            text: event.request.method + ' <' + event.target.url + '|' + event.request.host + '/' + manifest.name + ':' + manifest.tag + '> ' + event.target.digest,
             icon_emoji: cfg.slackIcon
         };
         if(cfg.slackChannel) slackMessage.channel = cfg.slackChannel;
